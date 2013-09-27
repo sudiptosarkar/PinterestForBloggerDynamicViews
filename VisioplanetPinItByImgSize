@@ -67,7 +67,6 @@ function visioplanetPinItInit(){
 
         $(htmlStr).insertAfter("#overview .overview-panel.current .overview-wrap .overview-inner .overview-header .share-controls.delay .delay");
         // We're placing this button right after the +1 button.
-        LOG && console.debug($("#mainPhotographVisioplanetHolder").html());
         $("a.visioplanetPinItButton").css("z-index", 1000);
       }
     }
