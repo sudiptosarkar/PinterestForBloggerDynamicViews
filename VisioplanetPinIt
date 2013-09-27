@@ -1,0 +1,89 @@
+// Logger variable. Set to false to turn off logging.
+var LOG = true;
+
+(function() {
+  try {
+    // In case of insite navigation, document.ready will work.
+    $(document).ready(function(){
+      LOG && console.debug("Time to start up Pin It.");
+      visioplanetPinItInit();
+    });
+    $(window).load(function() {
+      LOG && console.debug("Time to start up Pin It.");
+      visioplanetPinItInit();
+    });
+  } catch(e) {
+    console.error('Visioplanet Fotomoto plugin Exception: ' + e);
+    windowLoadMethod();
+  }
+})();
+
+function windowLoadMethod() {
+  try {
+    // If this is a direct post load, document.ready may not work and we will have to use window.load
+    $(window).load(function() {
+      visioplanetPinItInit();
+    });
+  } catch(e) {
+    console.error('Visioplanet Fotomoto plugin Exception: ' + e);
+  }
+}
+
+function visioplanetPinItInit(){
+  setTimeout (
+    function() {
+      if (document.readyState !== 'complete') {
+        LOG && console.debug("Document's not ready. Waiting...");
+        setTimeout(visioplanetPinItInit,1000);
+      } else {
+        // We're gonna wait for sometime and then do our work (URL remains the old one otherwise).
+	    LOG && console.debug("Let's begin PinIt Initialization...");
+        // We're gonna put the button on top of the image at the top right corner of it.
+        // For that, we'd have to check the width of the image.
+
+        var imgURL = "";
+
+        // Gotta set class of all photographs to "mainPhotographVisioplanet" now (if this works that is).
+        // But we're going with the image size. We're taking the first image with a height greater than 400px.
+        // Uncomment the following line if we're going for id = mainPhotographVisioplanet.
+
+        theDamnLoop:
+        $("img").each(
+          function(){
+            var theWidth = $(this).width();
+            var theHeight = $(this).height();
+
+            LOG && console.debug("Another loop iteration.");
+            if(theWidth >= 400) {
+              imgURL = $(this).attr("src");
+              LOG && console.debug("Got the image URL: " + imgURL);
+              return false;
+              LOG && console.debug("This line shouldn't come up.");
+            }
+        });
+
+        // Need to add code to put our image's url in the variable imgURL;
+        // Uncomment the following line if we're going for id = mainPhotographVisioplanet.
+        // imgURL = $("img.mainPhotographVisioplanet").attr("src");
+
+        var htmlStr = "<a class='visioplanetPinItButton' count-layout='horizontal' href='http://pinterest.com/pin/create/button/?url=";
+        htmlStr += document.location;		// URL was already encoded in IE 8.
+        htmlStr += "&amp;media=";
+        htmlStr += imgURL;
+        htmlStr += "'><img border='0' src='http://assets.pinterest.com/images/PinExt.png' title='Pin It'/></a>";
+
+        LOG && console.debug("The tag's as follows:\n\n" + htmlStr);
+
+        $(htmlStr).insertAfter("#overview .overview-panel.current .overview-wrap .overview-inner .overview-header .share-controls.delay .delay");
+        // We're placing this button right after the +1 button.
+        // Instead of insertBefore, we might need to do a .after()
+        LOG && console.debug($("#mainPhotographVisioplanetHolder").html());
+        $("a.visioplanetPinItButton").css("z-index", 1000);
+
+        // We might need to do an imgPos.Left += 10 and imgPos.Top += something before we do the following line.
+        // $("a.visioplanetPinItButton").offset(imgPos);
+        
+      }
+    }
+  , 2000);
+}
