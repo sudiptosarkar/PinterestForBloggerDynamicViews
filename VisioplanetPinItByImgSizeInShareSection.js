@@ -57,7 +57,7 @@ function visioplanetPinItInit(){
             }
         });
 
-        var htmlStr = "<a data-pin-config="beside" class='visioplanetPinItButton' count-layout='horizontal' href='http://pinterest.com/pin/create/button/?url=";
+        var htmlStr = "<a data-pin-config='beside' class='visioplanetPinItButton' count-layout='horizontal' href='http://pinterest.com/pin/create/button/?url=";
         htmlStr += document.location;		// URL was already encoded in IE 8.
         htmlStr += "&amp;media=";
         htmlStr += imgURL;
