@@ -1,5 +1,5 @@
 // Logger variable. Set to true to turn on logging.
-var LOG = false;
+var LOG = true;
 
 (function() {
   try {
