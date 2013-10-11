@@ -62,7 +62,6 @@ function visioplanetPinItInit(){
         htmlStr += "&amp;media=";
         htmlStr += imgURL;
         htmlStr += "'><img border='0' src='http://assets.pinterest.com/images/PinExt.png' title='Pin It'/></a>";
-        htmlStr += "<span style='margin-left:-44px;'><a data-pin-config='beside' data-pin-do='buttonBookmark' href='http://pinterest.com/pin/create/button/' style='outline:none;border:none;'/></span>";
 
         LOG && console.debug("The tag's as follows:\n\n" + htmlStr);
 
