@@ -57,11 +57,10 @@ function visioplanetPinItInit(){
         
         $("img").each(
           function(){
-            img.src = $(this).attr('src');
             var theWidth;
             var theHeight;
-            $(img).load(
-              function(){
+            $("<img/>").attr("src", $(this).attr('src')).load(
+              function() {
                 theWidth = this.width;
                 theHeight = this.height;
             });
