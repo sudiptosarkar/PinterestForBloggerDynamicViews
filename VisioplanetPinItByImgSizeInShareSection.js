@@ -15,7 +15,7 @@ var pinitInitInitialized = false;
       visioplanetPinItInit();
     });
   } catch(e) {
-    console.error('Visioplanet Fotomoto plugin Exception: ' + e);
+    console.error('Visioplanet Pinit Initialization Exception: ' + e);
     windowLoadMethod();
   }
 })();
@@ -27,13 +27,14 @@ function windowLoadMethod() {
       visioplanetPinItInit();
     });
   } catch(e) {
-    console.error('Visioplanet Fotomoto plugin Exception: ' + e);
+    console.error('Visioplanet Pinit Initialization Exception: ' + e);
   }
 }
 
 function visioplanetPinItInit(){
   setTimeout (
     function() {
+      LOG && console.debug("document status: " + document.readyState);
       if (document.readyState !== 'complete') {
         LOG && console.debug("Document's not ready. Waiting...");
         setTimeout(visioplanetPinItInit,1000);
@@ -41,7 +42,7 @@ function visioplanetPinItInit(){
         // The following line will make sure that PinIt button initialization runs only once.
         // So that multiple PinIt buttons don't show up.
         if(pinitInitInitialized == true) {
-          LOG && console.debug("PinIt initialization already started. Exiting visioplanetPinItInit() to avoid duplicates.")
+          LOG && console.debug("PinIt initialization already started. Exiting visioplanetPinItInit() to avoid duplicates.");
           return;
         }
         
