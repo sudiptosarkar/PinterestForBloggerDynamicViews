@@ -10,10 +10,10 @@ var pinitInitInitialized = false;
       LOG && console.debug("DOM is ready. Time to start up Pin It.");
       visioplanetPinItInit();
     });
-    $(window).load(function() {
-      LOG && console.debug("Window load is complete. Time to start up Pin It.");
-      visioplanetPinItInit();
-    });
+    //$(window).load(function() {
+    //  LOG && console.debug("Window load is complete. Time to start up Pin It.");
+    //  visioplanetPinItInit();
+    //});
   } catch(e) {
     console.error('Visioplanet Pinit Initialization Exception: ' + e);
     windowLoadMethod();
