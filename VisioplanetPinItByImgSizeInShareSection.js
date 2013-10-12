@@ -38,11 +38,6 @@ function visioplanetPinItInit(){
         LOG && console.debug("Document's not ready. Waiting...");
         setTimeout(visioplanetPinItInit,1000);
       } else {
-        // We're gonna wait for sometime and then do our work (URL remains the old one otherwise).
-	    LOG && console.debug("Let's begin PinIt Initialization...");
-        // We're gonna put the button on top of the image at the top right corner of it.
-        // For that, we'd have to check the width of the image.
-        
         // The following line will make sure that PinIt button initialization runs only once.
         // So that multiple PinIt buttons don't show up.
         if(pinitInitInitialized == true) {
@@ -50,7 +45,11 @@ function visioplanetPinItInit(){
           return;
         }
         
-        
+        // We're gonna wait for sometime and then do our work (URL remains the old one otherwise).
+	    LOG && console.debug("Let's begin PinIt Initialization...");
+        // We're gonna put the button on top of the image at the top right corner of it.
+        // For that, we'd have to check the width of the image.
+
         pinitInitInitialized = true;
         var imgURL = "";
         var img = new Image();
