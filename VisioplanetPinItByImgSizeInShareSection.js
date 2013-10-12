@@ -2,23 +2,22 @@
 var LOG = true;
 // Initialization status variable. Helps elimiate duplicate buttons.
 var pinitInitInitialized = false;
-var dateVar = new Date();
 
-LOG && console.debug(dateVar.getTime() + "    " + "Visioplanet PinIt Initialization script file is locked and loaded.");
+LOG && console.debug(new Date().getTime() + "    " + "Visioplanet PinIt Initialization script file is locked and loaded.");
 
 (function() {
   try {
     // In case of insite navigation, document.ready will work.
     $(document).ready(function(){
-      LOG && console.debug(dateVar.getTime() + "    " + "DOM is ready. Time to start up Pin It.");
+      LOG && console.debug(new Date().getTime() + "    " + "DOM is ready. Time to start up Pin It.");
       visioplanetPinItInit();
     });
-    //$(window).load(function() {
-    //  LOG && console.debug(dateVar.getTime() + "    " + "Window load is complete. Time to start up Pin It.");
-    //  visioplanetPinItInit();
-    //});
+    $(window).load(function() {
+      LOG && console.debug(new Date().getTime() + "    " + "Window load is complete. Time to start up Pin It.");
+      visioplanetPinItInit();
+    });
   } catch(e) {
-    console.error(dateVar.getTime() + "    " + 'Visioplanet Pinit Initialization Exception: ' + e);
+    console.error(new Date().getTime() + "    " + 'Visioplanet Pinit Initialization Exception: ' + e);
     windowLoadMethod();
   }
 })();
@@ -27,31 +26,31 @@ function windowLoadMethod() {
   try {
     // If this is a direct post load, document.ready may not work and we will have to use window.load
     $(window).load(function() {
-      console.debug(dateVar.getTime() + "    " + "Initializing from failsafe.")
+      console.debug(new Date().getTime() + "    " + "Initializing from failsafe.")
       visioplanetPinItInit();
     });
   } catch(e) {
-    console.error(dateVar.getTime() + "    " + 'Visioplanet Pinit Initialization Exception: ' + e);
+    console.error(new Date().getTime() + "    " + 'Visioplanet Pinit Initialization Exception: ' + e);
   }
 }
 
 function visioplanetPinItInit(){
   setTimeout (
     function() {
-      LOG && console.debug(dateVar.getTime() + "    " + "document status: " + document.readyState);
+      LOG && console.debug(new Date().getTime() + "    " + "document status: " + document.readyState);
       if (document.readyState !== 'complete') {
-        LOG && console.debug(dateVar.getTime() + "    " + "Document's not ready. Waiting...");
+        LOG && console.debug(new Date().getTime() + "    " + "Document's not ready. Waiting...");
         //setTimeout(visioplanetPinItInit,1000);
       } else {
         // The following line will make sure that PinIt button initialization runs only once.
         // So that multiple PinIt buttons don't show up.
         if(pinitInitInitialized == true) {
-          LOG && console.debug(dateVar.getTime() + "    " + "PinIt initialization already started. Exiting visioplanetPinItInit() to avoid duplicates.");
+          LOG && console.debug(new Date().getTime() + "    " + "PinIt initialization already started. Exiting visioplanetPinItInit() to avoid duplicates.");
           return;
         }
         
         // We're gonna wait for sometime and then do our work (URL remains the old one otherwise).
-	    LOG && console.debug(dateVar.getTime() + "    " + "Let's begin PinIt Initialization...");
+	    LOG && console.debug(new Date().getTime() + "    " + "Let's begin PinIt Initialization...");
         // We're gonna put the button on top of the image at the top right corner of it.
         // For that, we'd have to check the width of the image.
 
@@ -64,16 +63,21 @@ function visioplanetPinItInit(){
             var theWidth = 0;
             var theHeight = 0;
             img.src = $(this).attr('src');
-
+            //img.onload = function() {
+            //    theWidth = this.width;
+            //    theHeight = this.height;
+            //    LOG && console.debug(new Date().getTime() + "    " + this.width + "x" + this.height);
+            //};
+            
             theWidth = img.width;
             theHeight = img.height;
 
-            //LOG && console.debug(dateVar.getTime() + "    " + $(this).attr("src") + ": " + theWidth + "x" + theHeight);
+            LOG && console.debug(new Date().getTime() + "    " + $(this).attr("src") + ": " + theWidth + "x" + theHeight);
             if((theWidth >= 400) || (theHeight >= 400)) {
               imgURL = $(this).attr("src");
-              LOG && console.debug(dateVar.getTime() + "    " + "Got the image URL: " + imgURL);
+              LOG && console.debug(new Date().getTime() + "    " + "Got the image URL: " + imgURL);
               return false;
-              LOG && console.debug(dateVar.getTime() + "    " + "This line shouldn't come up.");
+              LOG && console.debug(new Date().getTime() + "    " + "This line shouldn't come up.");
             }
         });
 
@@ -83,12 +87,11 @@ function visioplanetPinItInit(){
         htmlStr += imgURL;
         htmlStr += "'><img border='0' src='http://assets.pinterest.com/images/PinExt.png' title='Pin It'/></a>";
 
-        LOG && console.debug(dateVar.getTime() + "    " + "The tag's as follows:\n\n" + htmlStr);
+        LOG && console.debug(new Date().getTime() + "    " + "The tag's as follows:\n\n" + htmlStr);
 
         $(htmlStr).insertAfter("span.share-facebook.delay");
         // We're placing this button right after the +1 button.
         $("a.visioplanetPinItButton").css("z-index", 1000);
-        LOG && console.debug("\n\n\n\n");
       }
     }
   , 1000);
