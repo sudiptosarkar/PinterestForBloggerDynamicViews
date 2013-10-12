@@ -48,7 +48,7 @@ function visioplanetPinItInit(){
             var theWidth = $(this).width();
             var theHeight = $(this).height();
 
-            LOG && console.debug(imgURL);
+            LOG && console.debug($(this).attr("src") + ": " + theWidth + "x" + theHeight);
             if((theWidth >= 400) || (theHeight >= 400)) {
               imgURL = $(this).attr("src");
               LOG && console.debug("Got the image URL: " + imgURL);
