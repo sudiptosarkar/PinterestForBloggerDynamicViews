@@ -66,8 +66,8 @@ function visioplanetPinItInit(){
                 LOG && console.debug(this.width + "x" + this.height);
             };
             
-            theWidth = img.width;
-            theHeight = img.height;
+            //theWidth = img.width;
+            //theHeight = img.height;
 
             LOG && console.debug($(this).attr("src") + ": " + theWidth + "x" + theHeight);
             if((theWidth >= 400) || (theHeight >= 400)) {
