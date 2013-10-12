@@ -1,15 +1,18 @@
 // Logger variable. Set to true to turn on logging.
 var LOG = true;
+// Initialization status variable. Helps elimiate duplicate buttons.
+var pinitInitInitialized = false;
 
 (function() {
   try {
     // In case of insite navigation, document.ready will work.
     $(document).ready(function(){
-      LOG && console.debug("DOM is ready.");
-      $(window).load(function() {
-      LOG && console.debug("Window load is complete. Time to start up Pin It.");
+      LOG && console.debug("DOM is ready. Time to start up Pin It.");
       visioplanetPinItInit();
     });
+    $(window).load(function() {
+      LOG && console.debug("Window load is complete. Time to start up Pin It.");
+      visioplanetPinItInit();
     });
   } catch(e) {
     console.error('Visioplanet Fotomoto plugin Exception: ' + e);
@@ -39,7 +42,15 @@ function visioplanetPinItInit(){
 	    LOG && console.debug("Let's begin PinIt Initialization...");
         // We're gonna put the button on top of the image at the top right corner of it.
         // For that, we'd have to check the width of the image.
-
+        
+        // The following line will make sure that PinIt button initialization runs only once.
+        // So that multiple PinIt buttons don't show up.
+        if(pinitInitInitialized == true) {
+          return;
+        }
+        
+        
+        pinitInitInitialized = true;
         var imgURL = "";
         var img = new Image();
         
