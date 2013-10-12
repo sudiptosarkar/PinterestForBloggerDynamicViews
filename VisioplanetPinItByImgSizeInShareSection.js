@@ -42,11 +42,13 @@ function visioplanetPinItInit(){
         // For that, we'd have to check the width of the image.
 
         var imgURL = "";
-
+        var img = new Image();
+        
         $("img").each(
           function(){
-            var theWidth = $(this).width();
-            var theHeight = $(this).height();
+            img.src = $(this).attr('src');
+            var theWidth = img.width();
+            var theHeight = img.height();
 
             LOG && console.debug($(this).attr("src") + ": " + theWidth + "x" + theHeight);
             if((theWidth >= 400) || (theHeight >= 400)) {
