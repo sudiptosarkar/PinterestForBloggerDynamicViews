@@ -59,12 +59,15 @@ function visioplanetPinItInit(){
           function(){
             var theWidth = 0;
             var theHeight = 0;
-            $("<img/>").attr("src", $(this).attr('src')).load(
+            $(img).attr("src", $(this).attr('src')).load(
               function() {
                 theWidth = this.width;
                 theHeight = this.height;
                 LOG && console.debug(this.width + "x" + this.height);
             });
+            
+            theWidth = $(img).width();
+            theHeight = $(img).height();
 
             LOG && console.debug($(this).attr("src") + ": " + theWidth + "x" + theHeight);
             if((theWidth >= 400) || (theHeight >= 400)) {
