@@ -33,7 +33,7 @@ function windowLoadMethod() {
 
 function visioplanetPinItInit(){
 //  setTimeout (
-    function() {
+//    function() {
       LOG && console.debug("document status: " + document.readyState);
       if (document.readyState !== 'complete') {
         LOG && console.debug("Document's not ready. Waiting...");
@@ -87,6 +87,6 @@ function visioplanetPinItInit(){
         // We're placing this button right after the +1 button.
         $("a.visioplanetPinItButton").css("z-index", 1000);
       }
-    }
+//    }
 //  , 1000);
 }
