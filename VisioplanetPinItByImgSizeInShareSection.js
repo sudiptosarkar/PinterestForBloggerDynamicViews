@@ -46,6 +46,7 @@ function visioplanetPinItInit(){
         // The following line will make sure that PinIt button initialization runs only once.
         // So that multiple PinIt buttons don't show up.
         if(pinitInitInitialized == true) {
+          LOG && console.debug("PinIt initialization already started. Exiting visioplanetPinItInit() to avoid duplicates.")
           return;
         }
         
