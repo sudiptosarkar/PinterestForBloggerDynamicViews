@@ -61,11 +61,11 @@ function visioplanetPinItInit(){
             var theWidth = 0;
             var theHeight = 0;
             img.src = $(this).attr('src');
-            img.onload = function() {
-                theWidth = this.width;
-                theHeight = this.height;
-                LOG && console.debug(new Date().getTime() + "    " + this.width + "x" + this.height);
-            };
+            //img.onload = function() {
+            //    theWidth = this.width;
+            //    theHeight = this.height;
+            //    LOG && console.debug(new Date().getTime() + "    " + this.width + "x" + this.height);
+            //};
             
             theWidth = img.width;
             theHeight = img.height;
