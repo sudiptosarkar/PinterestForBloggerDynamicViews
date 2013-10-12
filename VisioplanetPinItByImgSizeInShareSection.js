@@ -88,5 +88,5 @@ function visioplanetPinItInit(){
         $("a.visioplanetPinItButton").css("z-index", 1000);
       }
     }
-  , 2000);
+  , 1000);
 }
