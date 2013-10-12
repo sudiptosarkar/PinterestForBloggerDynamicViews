@@ -88,6 +88,7 @@ function visioplanetPinItInit(){
         // We're placing this button right after the +1 button.
         $("a.visioplanetPinItButton").css("z-index", 1000);
       }
+      LOG && console.debug(new Date().getTime() + "\n\n\n\n\n");
     }
   , 1000);
 }
