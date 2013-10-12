@@ -32,7 +32,7 @@ function windowLoadMethod() {
 }
 
 function visioplanetPinItInit(){
-  setTimeout (
+//  setTimeout (
     function() {
       LOG && console.debug("document status: " + document.readyState);
       if (document.readyState !== 'complete') {
@@ -63,6 +63,7 @@ function visioplanetPinItInit(){
               function() {
                 theWidth = this.width;
                 theHeight = this.height;
+                LOG && console.debug(this.width + "x" + this.height);
             });
 
             LOG && console.debug($(this).attr("src") + ": " + theWidth + "x" + theHeight);
@@ -87,5 +88,5 @@ function visioplanetPinItInit(){
         $("a.visioplanetPinItButton").css("z-index", 1000);
       }
     }
-  , 1000);
+//  , 1000);
 }
