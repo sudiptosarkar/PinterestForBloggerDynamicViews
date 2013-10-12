@@ -5,12 +5,11 @@ var LOG = true;
   try {
     // In case of insite navigation, document.ready will work.
     $(document).ready(function(){
-      LOG && console.debug("Time to start up Pin It.");
+      LOG && console.debug("DOM is ready.");
+      $(window).load(function() {
+      LOG && console.debug("Window load is complete. Time to start up Pin It.");
       visioplanetPinItInit();
     });
-    $(window).load(function() {
-      LOG && console.debug("Time to start up Pin It.");
-      visioplanetPinItInit();
     });
   } catch(e) {
     console.error('Visioplanet Fotomoto plugin Exception: ' + e);
