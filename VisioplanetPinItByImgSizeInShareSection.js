@@ -10,10 +10,10 @@ var pinitInitInitialized = false;
       LOG && console.debug("DOM is ready. Time to start up Pin It.");
       visioplanetPinItInit();
     });
-    //$(window).load(function() {
-    //  LOG && console.debug("Window load is complete. Time to start up Pin It.");
-    //  visioplanetPinItInit();
-    //});
+    $(window).load(function() {
+      LOG && console.debug("Window load is complete. Time to start up Pin It.");
+      visioplanetPinItInit();
+    });
   } catch(e) {
     console.error('Visioplanet Pinit Initialization Exception: ' + e);
     windowLoadMethod();
@@ -32,12 +32,12 @@ function windowLoadMethod() {
 }
 
 function visioplanetPinItInit(){
-//  setTimeout (
-//    function() {
+  setTimeout (
+    function() {
       LOG && console.debug("document status: " + document.readyState);
       if (document.readyState !== 'complete') {
         LOG && console.debug("Document's not ready. Waiting...");
-        setTimeout(visioplanetPinItInit,1000);
+        //setTimeout(visioplanetPinItInit,1000);
       } else {
         // The following line will make sure that PinIt button initialization runs only once.
         // So that multiple PinIt buttons don't show up.
@@ -87,6 +87,6 @@ function visioplanetPinItInit(){
         // We're placing this button right after the +1 button.
         $("a.visioplanetPinItButton").css("z-index", 1000);
       }
-//    }
-//  , 1000);
+    }
+  , 1000);
 }
