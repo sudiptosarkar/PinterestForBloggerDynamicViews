@@ -12,10 +12,10 @@ LOG && console.debug(new Date().getTime() + "    " + "Visioplanet PinIt Initiali
       LOG && console.debug(new Date().getTime() + "    " + "DOM is ready. Time to start up Pin It.");
       visioplanetPinItInit();
     });
-    $(window).load(function() {
-      LOG && console.debug(new Date().getTime() + "    " + "Window load is complete. Time to start up Pin It.");
-      visioplanetPinItInit();
-    });
+    //$(window).load(function() {
+    //  LOG && console.debug(new Date().getTime() + "    " + "Window load is complete. Time to start up Pin It.");
+    //  visioplanetPinItInit();
+    //});
   } catch(e) {
     console.error(new Date().getTime() + "    " + 'Visioplanet Pinit Initialization Exception: ' + e);
     windowLoadMethod();
@@ -63,16 +63,11 @@ function visioplanetPinItInit(){
             var theWidth = 0;
             var theHeight = 0;
             img.src = $(this).attr('src');
-            //img.onload = function() {
-            //    theWidth = this.width;
-            //    theHeight = this.height;
-            //    LOG && console.debug(new Date().getTime() + "    " + this.width + "x" + this.height);
-            //};
-            
+
             theWidth = img.width;
             theHeight = img.height;
 
-            LOG && console.debug(new Date().getTime() + "    " + $(this).attr("src") + ": " + theWidth + "x" + theHeight);
+            //LOG && console.debug(new Date().getTime() + "    " + $(this).attr("src") + ": " + theWidth + "x" + theHeight);
             if((theWidth >= 400) || (theHeight >= 400)) {
               imgURL = $(this).attr("src");
               LOG && console.debug(new Date().getTime() + "    " + "Got the image URL: " + imgURL);
