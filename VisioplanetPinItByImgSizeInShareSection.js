@@ -76,7 +76,7 @@ function visioplanetPinItInit(){
             }
         });
 
-        var htmlStr = "<span style=\"display: inline-block; margin: 0; width: 100px\"><a data-pin-config='beside' data-pin-do='buttonPin' class='visioplanetPinItButton' count-layout='horizontal' href='http://pinterest.com/pin/create/button/?url=";
+        var htmlStr = "<span class=\"share-pinterest-visioplanet\" style=\"display: inline-block; margin: 0; width: 100px\"><a data-pin-config='beside' data-pin-do='buttonPin' class='visioplanetPinItButton' count-layout='horizontal' href='http://pinterest.com/pin/create/button/?url=";
         htmlStr += encodeURIComponent(document.location);		// URL was already encoded in IE 8.
         htmlStr += "&amp;media=";
         htmlStr += encodeURIComponent(imgURL);
@@ -86,18 +86,26 @@ function visioplanetPinItInit(){
 
         LOG && console.debug(new Date().getTime() + "    " + "The tag's as follows:\n\n" + htmlStr);
 
-        $(htmlStr).insertAfter("span.share-facebook.delay");
-        // We're placing this button right after the +1 button.
-        $("a.visioplanetPinItButton").css("z-index", 1000);
-        
-        // Now loading up the pinit.js script to deal with the a link created above.
-        (function(d){
-          var f = d.getElementsByTagName('SCRIPT')[0], p = d.createElement('SCRIPT');
-          p.type = 'text/javascript';
-          p.async = true;
-          p.src = '//assets.pinterest.com/js/pinit.js';
-          f.parentNode.insertBefore(p, f);
-        }(document));
+        if($(".share-pinterest-visioplanet").length == 0) {
+          // As in add it to the DOM only if it isn't already there.
+          // This should definitively end the duplication issue.
+
+          $(htmlStr).insertAfter("span.share-facebook.delay");
+
+          // We're placing this button right after the +1 button.
+          $("a.visioplanetPinItButton").css("z-index", 1000);
+          
+          // Now loading up the pinit.js script to deal with the a link created above.
+          (function(d){
+            var f = d.getElementsByTagName('SCRIPT')[0], p = d.createElement('SCRIPT');
+            p.type = 'text/javascript';
+            p.async = true;
+            p.src = '//assets.pinterest.com/js/pinit.js';
+            f.parentNode.insertBefore(p, f);
+          }(document));
+        } else {
+          LOG && console.debug("Duplication averted. You're welcome!");
+        }
       }
       LOG && console.debug(new Date().getTime() + "\n\n\n\n\n");
     }
