@@ -75,9 +75,18 @@ function visioplanetPinItInit(){
               LOG && console.debug(new Date().getTime() + "    " + "This line shouldn't come up.");
             }
         });
+        
+        // URL contains ? after comment is posted or if blog is being viewed in a different template.
+        var pinUrl = document.location.toString();
+        var idx = pinUrl.indexOf('?');
+        if(idx != -1) {
+          pinUrl = pinUrl.substring(0, idx);
+          LOG && console.debug(new Date().getTime() + "    " + "additional params removed from the URL.");
+          LOG && console.debug(new Date().getTime() + "    " + "Actual URL: " + pinUrl);
+        }
 
         var htmlStr = "<span style=\"display: inline-block; margin: 0; width: 100px\"><a data-pin-config='beside' data-pin-do='buttonPin' class='visioplanetPinItButton' count-layout='horizontal' href='http://pinterest.com/pin/create/button/?url=";
-        htmlStr += encodeURIComponent(document.location);		// URL was already encoded in IE 8.
+        htmlStr += encodeURIComponent(pinUrl);		// URL was already encoded in IE 8.
         htmlStr += "&amp;media=";
         htmlStr += encodeURIComponent(imgURL);
         htmlStr += "&amp;description=";
