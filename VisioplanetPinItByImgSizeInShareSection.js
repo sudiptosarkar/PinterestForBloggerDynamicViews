@@ -58,7 +58,7 @@ function visioplanetPinItInit(){
         var imgURL = "";
         var img = new Image();
         
-        $("img").each(
+        $(".article-content img").each(
           function(){
             var theWidth = 0;
             var theHeight = 0;
